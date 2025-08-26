@@ -193,11 +193,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/PRIYESHAWADH/brain-flip-game/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/PRIYESHAWADH/brain-flip-game/discussions)
-- **Wiki**: [Project Wiki](https://github.com/PRIYESHAWADH/brain-flip-game/wiki)
 
 ---
 
-**Ready to flip your brain?** 🧠⚡ Start playing and challenge your cognitive abilities!
-
-**Play Now**: [https://your-game-url.com](https://your-game-url.com)
