@@ -96,6 +96,21 @@ Brain Flip Game is a web-based cognitive training game designed to improve react
 4. **Get Faster**: Timer decreases as you progress
 5. **Beat Your Score**: Try to achieve the highest score possible
 
+## 🎥 Gameplay Video
+
+Watch the Brain Flip Game in action! This video demonstrates the core gameplay mechanics, different game modes, and the overall user experience.
+
+[![Brain Flip Game Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+**Video Features:**
+- 🎮 **Gameplay Walkthrough** - See how the game works
+- ⚡ **Speed Challenges** - Watch the difficulty increase
+- 🏆 **Achievement System** - See rewards and badges
+- 👥 **Multiplayer Mode** - Real-time battles with friends
+- 📱 **PWA Features** - Mobile app-like experience
+
+*Replace `YOUR_VIDEO_ID` with your actual YouTube video ID*
+
 ## 🏗️ Project Structure
 
 ```
