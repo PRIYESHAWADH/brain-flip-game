@@ -1,0 +1,277 @@
+{
+  "version": "1.0.0",
+  "description": "Brain Flip Game Audio Asset Manifest",
+  "assets": {
+    "ui": {
+      "button-click": {
+        "file": "ui/button-click.mp3",
+        "duration": 0.15,
+        "volume": 0.6,
+        "description": "Sharp, satisfying click sound for button interactions",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 1,
+        "bitRate": 128
+      },
+      "button-hover": {
+        "file": "ui/button-hover.mp3",
+        "duration": 0.1,
+        "volume": 0.4,
+        "description": "Subtle hover sound for button focus states",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 1,
+        "bitRate": 128
+      },
+      "modal-open": {
+        "file": "ui/modal-open.mp3",
+        "duration": 0.3,
+        "volume": 0.5,
+        "description": "Smooth opening sound for modal dialogs",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      },
+      "modal-close": {
+        "file": "ui/modal-close.mp3",
+        "duration": 0.25,
+        "volume": 0.5,
+        "description": "Gentle closing sound for modal dialogs",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      },
+      "page-transition": {
+        "file": "ui/page-transition.mp3",
+        "duration": 0.4,
+        "volume": 0.3,
+        "description": "Smooth whoosh sound for page transitions",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      }
+    },
+    "game": {
+      "success-chime": {
+        "file": "game/success-chime.mp3",
+        "duration": 0.8,
+        "volume": 0.7,
+        "description": "Bright, uplifting chime for correct answers",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "failure-buzz": {
+        "file": "game/failure-buzz.mp3",
+        "duration": 0.5,
+        "volume": 0.6,
+        "description": "Low, gentle buzz for incorrect answers",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "level-up-fanfare": {
+        "file": "game/level-up-fanfare.mp3",
+        "duration": 2.0,
+        "volume": 0.8,
+        "description": "Triumphant fanfare for level progression",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "streak-bonus": {
+        "file": "game/streak-bonus.mp3",
+        "duration": 1.2,
+        "volume": 0.7,
+        "description": "Energetic sound for streak milestones",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "perfect-timing": {
+        "file": "game/perfect-timing.mp3",
+        "duration": 1.5,
+        "volume": 0.8,
+        "description": "Special sound for perfect timing achievements",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "game-start": {
+        "file": "game/game-start.mp3",
+        "duration": 1.0,
+        "volume": 0.6,
+        "description": "Energizing sound for game start",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "game-over": {
+        "file": "game/game-over.mp3",
+        "duration": 2.5,
+        "volume": 0.7,
+        "description": "Respectful game over sound with resolution",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "timer-warning": {
+        "file": "game/timer-warning.mp3",
+        "duration": 0.3,
+        "volume": 0.5,
+        "description": "Subtle warning sound for low time",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      }
+    },
+    "ambient": {
+      "background-music-focus": {
+        "file": "ambient/background-music-focus.mp3",
+        "duration": 180.0,
+        "volume": 0.3,
+        "loop": true,
+        "description": "Calm, focus-enhancing background music",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      },
+      "background-music-energy": {
+        "file": "ambient/background-music-energy.mp3",
+        "duration": 200.0,
+        "volume": 0.4,
+        "loop": true,
+        "description": "Upbeat, energizing background music",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      },
+      "ambient-space": {
+        "file": "ambient/ambient-space.mp3",
+        "duration": 300.0,
+        "volume": 0.2,
+        "loop": true,
+        "description": "Subtle space-themed ambient soundscape",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 96
+      },
+      "menu-ambient": {
+        "file": "ambient/menu-ambient.mp3",
+        "duration": 120.0,
+        "volume": 0.25,
+        "loop": true,
+        "description": "Gentle ambient sound for menu screens",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 128
+      }
+    },
+    "spatial": {
+      "direction-cue-up": {
+        "file": "spatial/direction-cue-up.mp3",
+        "duration": 0.2,
+        "volume": 0.5,
+        "spatial": true,
+        "description": "Spatial audio cue for upward direction",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "direction-cue-down": {
+        "file": "spatial/direction-cue-down.mp3",
+        "duration": 0.2,
+        "volume": 0.5,
+        "spatial": true,
+        "description": "Spatial audio cue for downward direction",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "direction-cue-left": {
+        "file": "spatial/direction-cue-left.mp3",
+        "duration": 0.2,
+        "volume": 0.5,
+        "spatial": true,
+        "description": "Spatial audio cue for left direction",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "direction-cue-right": {
+        "file": "spatial/direction-cue-right.mp3",
+        "duration": 0.2,
+        "volume": 0.5,
+        "spatial": true,
+        "description": "Spatial audio cue for right direction",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      },
+      "action-feedback": {
+        "file": "spatial/action-feedback.mp3",
+        "duration": 0.3,
+        "volume": 0.6,
+        "spatial": true,
+        "description": "Spatial feedback for user actions",
+        "format": "mp3",
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitRate": 192
+      }
+    }
+  },
+  "channels": {
+    "ui": {
+      "name": "User Interface",
+      "defaultVolume": 0.7,
+      "description": "Button clicks, menu sounds, and UI feedback"
+    },
+    "game": {
+      "name": "Game Effects",
+      "defaultVolume": 0.8,
+      "description": "Success/failure sounds, level progression, and game events"
+    },
+    "ambient": {
+      "name": "Background Music",
+      "defaultVolume": 0.4,
+      "description": "Background music and ambient soundscapes"
+    },
+    "spatial": {
+      "name": "Spatial Audio",
+      "defaultVolume": 0.6,
+      "description": "Directional audio cues and spatial feedback"
+    }
+  },
+  "preloadCritical": [
+    "ui/button-click",
+    "ui/button-hover",
+    "game/success-chime",
+    "game/failure-buzz",
+    "game/game-start"
+  ],
+  "notes": {
+    "implementation": "This manifest describes the audio assets for the Brain Flip Game. In a production environment, these would be actual audio files. For development, the audio system can use this manifest to understand the expected audio structure and provide silent placeholders or synthesized sounds.",
+    "generation": "Audio files can be generated using tools like Audacity, FL Studio, or online generators. For placeholder development, consider using Web Audio API to generate simple tones and effects.",
+    "optimization": "All audio files should be optimized for web delivery with appropriate compression and format selection (MP3 for compatibility, OGG for quality, AAC for efficiency)."
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Flip - You're Offline</title>
+    <style>
+        :root {
+            --color-primary: #3b82f6;
+            --color-primary-dark: #1d4ed8;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-gray-900);
+            color: var(--color-gray-50);
+        }
+
+        .container {
+            max-width: 28rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-gray-800);
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            color: var(--color-gray-100);
+            margin: 0 0 2rem;
+            line-height: 1.625;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            color: white;
+            background: var(--color-primary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background: var(--color-primary-dark);
+        }
+
+        .button span {
+            margin-right: 0.5rem;
+        }
+
+        .offline-animation {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .offline-animation {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎮</div>
+        <h1>You're Offline</h1>
+        <p>Don't worry! Brain Flip works offline so you can keep playing. Just make sure to connect to the internet later so your scores can sync.</p>
+        <a href="/" class="button">
+            <span>🔄</span>
+            Try Again
+        </a>
+    </div>
+    <script>
+        // Listen for online status changes
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+
+        // Redirect to home when the button is clicked
+        document.querySelector('.button').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

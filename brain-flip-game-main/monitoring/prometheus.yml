@@ -1,0 +1,116 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "rules/*.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Node Exporter for system metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Brain Flip Frontend Application
+  - job_name: 'brain-flip-frontend'
+    static_configs:
+      - targets: ['frontend:3000']
+    metrics_path: '/api/metrics'
+    scrape_interval: 10s
+
+  # AI Personalization Service
+  - job_name: 'ai-personalization'
+    static_configs:
+      - targets: ['ai-personalization:8001']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Game Engine Service
+  - job_name: 'game-engine'
+    static_configs:
+      - targets: ['game-engine:8002']
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+
+  # Battle Orchestration Service
+  - job_name: 'battle-orchestration'
+    static_configs:
+      - targets: ['battle-orchestration:8003']
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+
+  # Cognitive Analytics Service
+  - job_name: 'cognitive-analytics'
+    static_configs:
+      - targets: ['cognitive-analytics:8004']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Social Platform Service
+  - job_name: 'social-platform'
+    static_configs:
+      - targets: ['social-platform:8005']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # PostgreSQL Database
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres-exporter:9187']
+
+  # Redis Cache
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+
+  # InfluxDB
+  - job_name: 'influxdb'
+    static_configs:
+      - targets: ['influxdb:8086']
+    metrics_path: '/metrics'
+
+  # Kafka
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka-exporter:9308']
+
+  # NGINX Load Balancer
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx-exporter:9113']
+
+  # Custom Brain Flip Metrics
+  - job_name: 'brain-flip-custom-metrics'
+    static_configs:
+      - targets: ['metrics-collector:8080']
+    metrics_path: '/custom-metrics'
+    scrape_interval: 30s
+
+  # Blackbox Exporter for endpoint monitoring
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - https://app.brainflip.ai
+        - https://api.brainflip.ai/health
+        - https://battle.brainflip.ai/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115

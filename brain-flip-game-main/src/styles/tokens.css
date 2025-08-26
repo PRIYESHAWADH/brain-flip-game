@@ -1,0 +1,384 @@
+/**
+ * Design Token System - Centralized design values
+ * Organized in layers: Primitive → Semantic → Component
+ */
+
+:root {
+  /* ===== PRIMITIVE TOKENS ===== */
+  
+  /* Color Primitives */
+  --primitive-white: #ffffff;
+  --primitive-black: #000000;
+  
+  /* Gray Scale */
+  --primitive-gray-50: #f9fafb;
+  --primitive-gray-100: #f3f4f6;
+  --primitive-gray-200: #e5e7eb;
+  --primitive-gray-300: #d1d5db;
+  --primitive-gray-400: #9ca3af;
+  --primitive-gray-500: #6b7280;
+  --primitive-gray-600: #4b5563;
+  --primitive-gray-700: #374151;
+  --primitive-gray-800: #1f2937;
+  --primitive-gray-900: #111827;
+  --primitive-gray-950: #030712;
+  
+  /* Brand Colors */
+  --primitive-blue-50: #eff6ff;
+  --primitive-blue-100: #dbeafe;
+  --primitive-blue-200: #bfdbfe;
+  --primitive-blue-300: #93c5fd;
+  --primitive-blue-400: #60a5fa;
+  --primitive-blue-500: #3b82f6;
+  --primitive-blue-600: #2563eb;
+  --primitive-blue-700: #1d4ed8;
+  --primitive-blue-800: #1e40af;
+  --primitive-blue-900: #1e3a8a;
+  
+  /* Accent Colors */
+  --primitive-green-50: #ecfdf5;
+  --primitive-green-100: #d1fae5;
+  --primitive-green-200: #a7f3d0;
+  --primitive-green-300: #6ee7b7;
+  --primitive-green-400: #34d399;
+  --primitive-green-500: #10b981;
+  --primitive-green-600: #059669;
+  --primitive-green-700: #047857;
+  --primitive-green-800: #065f46;
+  --primitive-green-900: #064e3b;
+  
+  --primitive-yellow-50: #fefce8;
+  --primitive-yellow-100: #fef3c7;
+  --primitive-yellow-200: #fde68a;
+  --primitive-yellow-300: #fcd34d;
+  --primitive-yellow-400: #fbbf24;
+  --primitive-yellow-500: #f59e0b;
+  --primitive-yellow-600: #d97706;
+  --primitive-yellow-700: #b45309;
+  --primitive-yellow-800: #92400e;
+  --primitive-yellow-900: #78350f;
+  
+  --primitive-red-50: #fef2f2;
+  --primitive-red-100: #fee2e2;
+  --primitive-red-200: #fecaca;
+  --primitive-red-300: #fca5a5;
+  --primitive-red-400: #f87171;
+  --primitive-red-500: #ef4444;
+  --primitive-red-600: #dc2626;
+  --primitive-red-700: #b91c1c;
+  --primitive-red-800: #991b1b;
+  --primitive-red-900: #7f1d1d;
+  
+  /* Neon/Cyber Colors (Game Specific) */
+  --primitive-neon-green: #00ff41;
+  --primitive-neon-blue: #0080ff;
+  --primitive-neon-pink: #ff0080;
+  --primitive-neon-yellow: #ffff00;
+  --primitive-neon-cyan: #00ffff;
+  --primitive-neon-purple: #8000ff;
+  
+  /* Typography Primitives */
+  --primitive-font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --primitive-font-family-mono: 'Orbitron', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  --primitive-font-family-display: 'Orbitron', 'Inter', sans-serif;
+  
+  --primitive-font-size-xs: 0.75rem;    /* 12px */
+  --primitive-font-size-sm: 0.875rem;   /* 14px */
+  --primitive-font-size-base: 1rem;     /* 16px */
+  --primitive-font-size-lg: 1.125rem;   /* 18px */
+  --primitive-font-size-xl: 1.25rem;    /* 20px */
+  --primitive-font-size-2xl: 1.5rem;    /* 24px */
+  --primitive-font-size-3xl: 1.875rem;  /* 30px */
+  --primitive-font-size-4xl: 2.25rem;   /* 36px */
+  --primitive-font-size-5xl: 3rem;      /* 48px */
+  --primitive-font-size-6xl: 3.75rem;   /* 60px */
+  
+  --primitive-font-weight-light: 300;
+  --primitive-font-weight-normal: 400;
+  --primitive-font-weight-medium: 500;
+  --primitive-font-weight-semibold: 600;
+  --primitive-font-weight-bold: 700;
+  --primitive-font-weight-extrabold: 800;
+  
+  --primitive-line-height-tight: 1.25;
+  --primitive-line-height-snug: 1.375;
+  --primitive-line-height-normal: 1.5;
+  --primitive-line-height-relaxed: 1.625;
+  --primitive-line-height-loose: 2;
+  
+  /* Spacing Primitives */
+  --primitive-space-0: 0;
+  --primitive-space-px: 1px;
+  --primitive-space-0-5: 0.125rem;  /* 2px */
+  --primitive-space-1: 0.25rem;     /* 4px */
+  --primitive-space-1-5: 0.375rem;  /* 6px */
+  --primitive-space-2: 0.5rem;      /* 8px */
+  --primitive-space-2-5: 0.625rem;  /* 10px */
+  --primitive-space-3: 0.75rem;     /* 12px */
+  --primitive-space-3-5: 0.875rem;  /* 14px */
+  --primitive-space-4: 1rem;        /* 16px */
+  --primitive-space-5: 1.25rem;     /* 20px */
+  --primitive-space-6: 1.5rem;      /* 24px */
+  --primitive-space-7: 1.75rem;     /* 28px */
+  --primitive-space-8: 2rem;        /* 32px */
+  --primitive-space-9: 2.25rem;     /* 36px */
+  --primitive-space-10: 2.5rem;     /* 40px */
+  --primitive-space-11: 2.75rem;    /* 44px */
+  --primitive-space-12: 3rem;       /* 48px */
+  --primitive-space-14: 3.5rem;     /* 56px */
+  --primitive-space-16: 4rem;       /* 64px */
+  --primitive-space-20: 5rem;       /* 80px */
+  --primitive-space-24: 6rem;       /* 96px */
+  --primitive-space-32: 8rem;       /* 128px */
+  
+  /* Border Radius Primitives */
+  --primitive-radius-none: 0;
+  --primitive-radius-sm: 0.125rem;   /* 2px */
+  --primitive-radius-base: 0.25rem;  /* 4px */
+  --primitive-radius-md: 0.375rem;   /* 6px */
+  --primitive-radius-lg: 0.5rem;     /* 8px */
+  --primitive-radius-xl: 0.75rem;    /* 12px */
+  --primitive-radius-2xl: 1rem;      /* 16px */
+  --primitive-radius-3xl: 1.5rem;    /* 24px */
+  --primitive-radius-full: 9999px;
+  
+  /* Shadow Primitives */
+  --primitive-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --primitive-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --primitive-shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --primitive-shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --primitive-shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --primitive-shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --primitive-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --primitive-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  
+  /* Neon Shadows (Game Specific) */
+  --primitive-shadow-neon-green: 0 0 20px var(--primitive-neon-green);
+  --primitive-shadow-neon-blue: 0 0 20px var(--primitive-neon-blue);
+  --primitive-shadow-neon-pink: 0 0 20px var(--primitive-neon-pink);
+  --primitive-shadow-neon-yellow: 0 0 20px var(--primitive-neon-yellow);
+  
+  /* Animation Primitives */
+  --primitive-duration-75: 75ms;
+  --primitive-duration-100: 100ms;
+  --primitive-duration-150: 150ms;
+  --primitive-duration-200: 200ms;
+  --primitive-duration-300: 300ms;
+  --primitive-duration-500: 500ms;
+  --primitive-duration-700: 700ms;
+  --primitive-duration-1000: 1000ms;
+  
+  --primitive-easing-linear: linear;
+  --primitive-easing-ease: ease;
+  --primitive-easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --primitive-easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --primitive-easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --primitive-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Z-Index Primitives */
+  --primitive-z-0: 0;
+  --primitive-z-10: 10;
+  --primitive-z-20: 20;
+  --primitive-z-30: 30;
+  --primitive-z-40: 40;
+  --primitive-z-50: 50;
+  --primitive-z-auto: auto;
+  
+  /* ===== SEMANTIC TOKENS ===== */
+  
+  /* Background Colors */
+  --color-background-primary: var(--primitive-gray-950);
+  --color-background-secondary: var(--primitive-gray-900);
+  --color-background-tertiary: var(--primitive-gray-800);
+  --color-background-overlay: rgba(0, 0, 0, 0.8);
+  
+  /* Surface Colors */
+  --color-surface-primary: rgba(255, 255, 255, 0.05);
+  --color-surface-secondary: rgba(255, 255, 255, 0.1);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.15);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-surface-active: rgba(255, 255, 255, 0.12);
+  
+  /* Text Colors */
+  --color-text-primary: var(--primitive-white);
+  --color-text-secondary: var(--primitive-gray-300);
+  --color-text-tertiary: var(--primitive-gray-400);
+  --color-text-disabled: var(--primitive-gray-600);
+  --color-text-inverse: var(--primitive-black);
+  
+  /* Brand Colors */
+  --color-primary: var(--primitive-neon-blue);
+  --color-primary-hover: var(--primitive-blue-400);
+  --color-primary-active: var(--primitive-blue-600);
+  
+  /* Status Colors */
+  --color-success: var(--primitive-neon-green);
+  --color-success-hover: var(--primitive-green-400);
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  
+  --color-warning: var(--primitive-neon-yellow);
+  --color-warning-hover: var(--primitive-yellow-400);
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  
+  --color-danger: var(--primitive-red-500);
+  --color-danger-hover: var(--primitive-red-400);
+  --color-danger-bg: rgba(239, 68, 68, 0.1);
+  
+  --color-info: var(--primitive-neon-cyan);
+  --color-info-hover: var(--primitive-blue-400);
+  --color-info-bg: rgba(59, 130, 246, 0.1);
+  
+  /* Game-Specific Colors */
+  --color-neon-green: var(--primitive-neon-green);
+  --color-neon-blue: var(--primitive-neon-blue);
+  --color-neon-pink: var(--primitive-neon-pink);
+  --color-neon-yellow: var(--primitive-neon-yellow);
+  --color-neon-cyan: var(--primitive-neon-cyan);
+  --color-neon-purple: var(--primitive-neon-purple);
+  
+  /* Border Colors */
+  --color-border-primary: rgba(255, 255, 255, 0.1);
+  --color-border-secondary: rgba(255, 255, 255, 0.05);
+  --color-border-focus: var(--color-primary);
+  --color-border-danger: var(--color-danger);
+  
+  /* Typography Semantic */
+  --font-family-primary: var(--primitive-font-family-sans);
+  --font-family-mono: var(--primitive-font-family-mono);
+  --font-family-display: var(--primitive-font-family-display);
+  
+  --text-size-xs: var(--primitive-font-size-xs);
+  --text-size-sm: var(--primitive-font-size-sm);
+  --text-size-base: var(--primitive-font-size-base);
+  --text-size-lg: var(--primitive-font-size-lg);
+  --text-size-xl: var(--primitive-font-size-xl);
+  --text-size-2xl: var(--primitive-font-size-2xl);
+  --text-size-3xl: var(--primitive-font-size-3xl);
+  --text-size-4xl: var(--primitive-font-size-4xl);
+  --text-size-5xl: var(--primitive-font-size-5xl);
+  --text-size-6xl: var(--primitive-font-size-6xl);
+  
+  --text-weight-light: var(--primitive-font-weight-light);
+  --text-weight-normal: var(--primitive-font-weight-normal);
+  --text-weight-medium: var(--primitive-font-weight-medium);
+  --text-weight-semibold: var(--primitive-font-weight-semibold);
+  --text-weight-bold: var(--primitive-font-weight-bold);
+  
+  --text-line-height-tight: var(--primitive-line-height-tight);
+  --text-line-height-normal: var(--primitive-line-height-normal);
+  --text-line-height-relaxed: var(--primitive-line-height-relaxed);
+  
+  /* Spacing Semantic */
+  --space-component-padding-sm: var(--primitive-space-2);
+  --space-component-padding-md: var(--primitive-space-4);
+  --space-component-padding-lg: var(--primitive-space-6);
+  
+  --space-component-gap-sm: var(--primitive-space-2);
+  --space-component-gap-md: var(--primitive-space-4);
+  --space-component-gap-lg: var(--primitive-space-6);
+  
+  --space-layout-margin: var(--primitive-space-4);
+  --space-layout-padding: var(--primitive-space-6);
+  --space-layout-gap: var(--primitive-space-8);
+  
+  /* Border Radius Semantic */
+  --radius-component-sm: var(--primitive-radius-base);
+  --radius-component-md: var(--primitive-radius-lg);
+  --radius-component-lg: var(--primitive-radius-xl);
+  --radius-component-full: var(--primitive-radius-full);
+  
+  /* Shadow Semantic */
+  --shadow-component-sm: var(--primitive-shadow-sm);
+  --shadow-component-md: var(--primitive-shadow-base);
+  --shadow-component-lg: var(--primitive-shadow-md);
+  --shadow-component-xl: var(--primitive-shadow-lg);
+  
+  --shadow-neon-primary: var(--primitive-shadow-neon-blue);
+  --shadow-neon-success: var(--primitive-shadow-neon-green);
+  --shadow-neon-warning: var(--primitive-shadow-neon-yellow);
+  --shadow-neon-danger: 0 0 20px var(--color-danger);
+  
+  /* Animation Semantic */
+  --duration-fast: var(--primitive-duration-150);
+  --duration-normal: var(--primitive-duration-300);
+  --duration-slow: var(--primitive-duration-500);
+  
+  --easing-standard: var(--primitive-easing-ease-out);
+  --easing-emphasized: var(--primitive-easing-bounce);
+  --easing-smooth: var(--primitive-easing-ease-in-out);
+  
+  /* Z-Index Semantic */
+  --z-dropdown: var(--primitive-z-10);
+  --z-sticky: var(--primitive-z-20);
+  --z-fixed: var(--primitive-z-30);
+  --z-modal-backdrop: var(--primitive-z-40);
+  --z-modal: var(--primitive-z-50);
+  
+  /* ===== COMPONENT TOKENS ===== */
+  
+  /* Button Component */
+  --button-padding-sm: var(--primitive-space-2) var(--primitive-space-3);
+  --button-padding-md: var(--primitive-space-3) var(--primitive-space-4);
+  --button-padding-lg: var(--primitive-space-4) var(--primitive-space-6);
+  
+  --button-text-size-sm: var(--text-size-sm);
+  --button-text-size-md: var(--text-size-base);
+  --button-text-size-lg: var(--text-size-lg);
+  
+  --button-radius: var(--radius-component-md);
+  --button-shadow: var(--shadow-component-sm);
+  --button-transition: all var(--duration-fast) var(--easing-standard);
+  
+  /* Card Component */
+  --card-padding: var(--space-component-padding-lg);
+  --card-radius: var(--radius-component-lg);
+  --card-shadow: var(--shadow-component-md);
+  --card-bg: var(--color-surface-primary);
+  --card-border: 1px solid var(--color-border-primary);
+  
+  /* Modal Component */
+  --modal-padding: var(--primitive-space-6);
+  --modal-radius: var(--radius-component-lg);
+  --modal-shadow: var(--shadow-component-xl);
+  --modal-backdrop: var(--color-background-overlay);
+  --modal-max-width: 32rem;
+  
+  /* Input Component */
+  --input-padding: var(--primitive-space-3) var(--primitive-space-4);
+  --input-radius: var(--radius-component-md);
+  --input-border: 1px solid var(--color-border-primary);
+  --input-border-focus: 2px solid var(--color-border-focus);
+  --input-bg: var(--color-surface-secondary);
+  
+  /* Game HUD Component */
+  --hud-padding: var(--primitive-space-4);
+  --hud-gap: var(--primitive-space-4);
+  --hud-bg: var(--color-surface-primary);
+  --hud-border: var(--color-border-primary);
+  --hud-radius: var(--radius-component-md);
+  
+  /* Touch Targets */
+  --touch-target-min: var(--primitive-space-11); /* 44px minimum */
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --easing-standard: linear;
+    --easing-emphasized: linear;
+    --easing-smooth: linear;
+  }
+}
+
+/* ===== HIGH CONTRAST SUPPORT ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: var(--primitive-white);
+    --color-text-secondary: var(--primitive-gray-200);
+    --color-border-primary: rgba(255, 255, 255, 0.3);
+    --color-surface-primary: rgba(255, 255, 255, 0.1);
+  }
+}

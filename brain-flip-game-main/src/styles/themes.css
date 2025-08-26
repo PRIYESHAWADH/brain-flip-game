@@ -1,0 +1,260 @@
+/**
+ * Theme System - Multiple theme variants
+ * Supports: Dark (default), Light, High Contrast, Reduced Motion
+ */
+
+/* ===== DARK THEME (DEFAULT) ===== */
+[data-theme="dark"], :root {
+  /* Background Colors */
+  --color-background-primary: var(--primitive-gray-950);
+  --color-background-secondary: var(--primitive-gray-900);
+  --color-background-tertiary: var(--primitive-gray-800);
+  --color-background-overlay: rgba(0, 0, 0, 0.8);
+  
+  /* Surface Colors */
+  --color-surface-primary: rgba(255, 255, 255, 0.05);
+  --color-surface-secondary: rgba(255, 255, 255, 0.1);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.15);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-surface-active: rgba(255, 255, 255, 0.12);
+  
+  /* Text Colors */
+  --color-text-primary: var(--primitive-white);
+  --color-text-secondary: var(--primitive-gray-300);
+  --color-text-tertiary: var(--primitive-gray-400);
+  --color-text-disabled: var(--primitive-gray-600);
+  --color-text-inverse: var(--primitive-black);
+  
+  /* Border Colors */
+  --color-border-primary: rgba(255, 255, 255, 0.1);
+  --color-border-secondary: rgba(255, 255, 255, 0.05);
+  
+  /* Game-specific neon colors remain vibrant in dark theme */
+  --color-neon-green: var(--primitive-neon-green);
+  --color-neon-blue: var(--primitive-neon-blue);
+  --color-neon-pink: var(--primitive-neon-pink);
+  --color-neon-yellow: var(--primitive-neon-yellow);
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+  /* Background Colors */
+  --color-background-primary: var(--primitive-white);
+  --color-background-secondary: var(--primitive-gray-50);
+  --color-background-tertiary: var(--primitive-gray-100);
+  --color-background-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Surface Colors */
+  --color-surface-primary: rgba(0, 0, 0, 0.05);
+  --color-surface-secondary: rgba(0, 0, 0, 0.1);
+  --color-surface-tertiary: rgba(0, 0, 0, 0.15);
+  --color-surface-hover: rgba(0, 0, 0, 0.08);
+  --color-surface-active: rgba(0, 0, 0, 0.12);
+  
+  /* Text Colors */
+  --color-text-primary: var(--primitive-gray-900);
+  --color-text-secondary: var(--primitive-gray-700);
+  --color-text-tertiary: var(--primitive-gray-600);
+  --color-text-disabled: var(--primitive-gray-400);
+  --color-text-inverse: var(--primitive-white);
+  
+  /* Border Colors */
+  --color-border-primary: rgba(0, 0, 0, 0.1);
+  --color-border-secondary: rgba(0, 0, 0, 0.05);
+  
+  /* Adjust neon colors for light theme visibility */
+  --color-neon-green: var(--primitive-green-600);
+  --color-neon-blue: var(--primitive-blue-600);
+  --color-neon-pink: #e91e63;
+  --color-neon-yellow: var(--primitive-yellow-600);
+  
+  /* Adjust shadows for light theme */
+  --shadow-neon-primary: 0 0 20px rgba(37, 99, 235, 0.3);
+  --shadow-neon-success: 0 0 20px rgba(5, 150, 105, 0.3);
+  --shadow-neon-warning: 0 0 20px rgba(217, 119, 6, 0.3);
+}
+
+/* ===== HIGH CONTRAST THEME ===== */
+[data-theme="high-contrast"] {
+  /* Background Colors - Pure black/white for maximum contrast */
+  --color-background-primary: var(--primitive-black);
+  --color-background-secondary: var(--primitive-gray-900);
+  --color-background-tertiary: var(--primitive-gray-800);
+  --color-background-overlay: rgba(0, 0, 0, 0.9);
+  
+  /* Surface Colors - Higher contrast */
+  --color-surface-primary: rgba(255, 255, 255, 0.15);
+  --color-surface-secondary: rgba(255, 255, 255, 0.2);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.25);
+  --color-surface-hover: rgba(255, 255, 255, 0.18);
+  --color-surface-active: rgba(255, 255, 255, 0.22);
+  
+  /* Text Colors - Maximum contrast */
+  --color-text-primary: var(--primitive-white);
+  --color-text-secondary: var(--primitive-gray-200);
+  --color-text-tertiary: var(--primitive-gray-300);
+  --color-text-disabled: var(--primitive-gray-500);
+  
+  /* Border Colors - More visible */
+  --color-border-primary: rgba(255, 255, 255, 0.3);
+  --color-border-secondary: rgba(255, 255, 255, 0.2);
+  --color-border-focus: var(--primitive-white);
+  
+  /* Status Colors - High contrast versions */
+  --color-success: #00ff00;
+  --color-warning: #ffff00;
+  --color-danger: #ff0000;
+  --color-info: #00ffff;
+  
+  /* Neon colors - Maximum visibility */
+  --color-neon-green: #00ff00;
+  --color-neon-blue: #0080ff;
+  --color-neon-pink: #ff0080;
+  --color-neon-yellow: #ffff00;
+  
+  /* Enhanced shadows for visibility */
+  --shadow-neon-primary: 0 0 30px var(--color-neon-blue);
+  --shadow-neon-success: 0 0 30px var(--color-neon-green);
+  --shadow-neon-warning: 0 0 30px var(--color-neon-yellow);
+  --shadow-neon-danger: 0 0 30px var(--color-danger);
+}
+
+/* ===== REDUCED MOTION THEME ===== */
+[data-theme="reduced-motion"] {
+  /* Disable all animations and transitions */
+  --duration-fast: 0ms;
+  --duration-normal: 0ms;
+  --duration-slow: 0ms;
+  
+  --easing-standard: linear;
+  --easing-emphasized: linear;
+  --easing-smooth: linear;
+  
+  /* Remove neon glows that might cause motion sensitivity */
+  --shadow-neon-primary: var(--shadow-component-md);
+  --shadow-neon-success: var(--shadow-component-md);
+  --shadow-neon-warning: var(--shadow-component-md);
+  --shadow-neon-danger: var(--shadow-component-md);
+}
+
+/* ===== THEME TRANSITIONS ===== */
+* {
+  transition: 
+    background-color var(--duration-normal) var(--easing-standard),
+    border-color var(--duration-normal) var(--easing-standard),
+    color var(--duration-normal) var(--easing-standard),
+    box-shadow var(--duration-normal) var(--easing-standard);
+}
+
+/* Disable transitions during theme changes to prevent flash */
+[data-theme-changing="true"] * {
+  transition: none !important;
+}
+
+/* ===== SYSTEM PREFERENCE INTEGRATION ===== */
+
+/* Respect system dark mode preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Dark theme tokens already applied as default */
+  }
+}
+
+/* Respect system light mode preference */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-background-primary: var(--primitive-white);
+    --color-background-secondary: var(--primitive-gray-50);
+    --color-text-primary: var(--primitive-gray-900);
+    --color-text-secondary: var(--primitive-gray-700);
+    --color-border-primary: rgba(0, 0, 0, 0.1);
+    --color-surface-primary: rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Respect system high contrast preference */
+@media (prefers-contrast: high) {
+  :root:not([data-theme]) {
+    --color-text-primary: var(--primitive-white);
+    --color-text-secondary: var(--primitive-gray-200);
+    --color-border-primary: rgba(255, 255, 255, 0.3);
+    --color-surface-primary: rgba(255, 255, 255, 0.15);
+    --color-border-focus: var(--primitive-white);
+  }
+}
+
+/* Respect system reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-theme]) {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --easing-standard: linear;
+    --easing-emphasized: linear;
+    --easing-smooth: linear;
+  }
+}
+
+/* ===== THEME-SPECIFIC COMPONENT OVERRIDES ===== */
+
+/* Light theme specific adjustments */
+[data-theme="light"] {
+  /* Card components need more definition in light theme */
+  --card-border: 1px solid rgba(0, 0, 0, 0.15);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  
+  /* Input components */
+  --input-bg: var(--primitive-white);
+  --input-border: 1px solid rgba(0, 0, 0, 0.15);
+  
+  /* Button adjustments */
+  --button-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* High contrast theme specific adjustments */
+[data-theme="high-contrast"] {
+  /* Stronger borders and shadows */
+  --card-border: 2px solid rgba(255, 255, 255, 0.3);
+  --input-border: 2px solid rgba(255, 255, 255, 0.3);
+  --input-border-focus: 3px solid var(--primitive-white);
+  
+  /* Remove subtle effects that reduce contrast */
+  --card-shadow: none;
+  --button-shadow: none;
+  --shadow-component-sm: none;
+  --shadow-component-md: none;
+  --shadow-component-lg: none;
+}
+
+/* ===== THEME UTILITIES ===== */
+
+/* Theme-aware focus styles */
+.focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Theme-aware selection styles */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Theme-aware scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-tertiary);
+  border-radius: var(--radius-component-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-hover);
+}

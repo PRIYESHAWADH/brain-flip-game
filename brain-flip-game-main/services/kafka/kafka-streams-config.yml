@@ -1,0 +1,351 @@
+# Ultimate Brain Flip Experience - Kafka Streams Configuration
+# Real-time data streaming and processing
+
+# Kafka Cluster Configuration
+kafka:
+  bootstrap_servers: "kafka-1:9092,kafka-2:9092,kafka-3:9092"
+  security_protocol: "SASL_SSL"
+  sasl_mechanism: "PLAIN"
+  sasl_username: "brain-flip-streams"
+  sasl_password: "${KAFKA_SASL_PASSWORD}"
+  
+  # Producer Configuration
+  producer:
+    acks: "all"
+    retries: 2147483647
+    max_in_flight_requests_per_connection: 5
+    enable_idempotence: true
+    compression_type: "snappy"
+    batch_size: 16384
+    linger_ms: 5
+    buffer_memory: 33554432
+    
+  # Consumer Configuration  
+  consumer:
+    group_id: "brain-flip-analytics"
+    auto_offset_reset: "earliest"
+    enable_auto_commit: false
+    max_poll_records: 500
+    session_timeout_ms: 30000
+    heartbeat_interval_ms: 3000
+    
+  # Streams Configuration
+  streams:
+    application_id: "brain-flip-cognitive-analytics"
+    num_stream_threads: 4
+    commit_interval_ms: 1000
+    cache_max_bytes_buffering: 10485760
+    default_key_serde: "org.apache.kafka.common.serialization.Serdes$StringSerde"
+    default_value_serde: "io.confluent.kafka.serializers.KafkaAvroSerde"
+    
+    # State Store Configuration
+    state_dir: "/tmp/kafka-streams"
+    replication_factor: 3
+    
+    # Processing Guarantee
+    processing_guarantee: "exactly_once_v2"
+    
+    # Topology Optimization
+    topology_optimization: "all"
+
+# Topic Configuration
+topics:
+  # Raw Events
+  game_events:
+    name: "brain-flip.game.events"
+    partitions: 12
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 604800000  # 7 days
+      segment_ms: 86400000     # 1 day
+      compression_type: "snappy"
+      
+  instruction_responses:
+    name: "brain-flip.instruction.responses"
+    partitions: 12
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 2592000000  # 30 days
+      
+  battle_events:
+    name: "brain-flip.battle.events"
+    partitions: 6
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 604800000  # 7 days
+      
+  social_events:
+    name: "brain-flip.social.events"
+    partitions: 6
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 1209600000  # 14 days
+      
+  # Processed Streams
+  cognitive_metrics:
+    name: "brain-flip.cognitive.metrics"
+    partitions: 8
+    replication_factor: 3
+    config:
+      cleanup_policy: "compact,delete"
+      retention_ms: 7776000000  # 90 days
+      
+  user_profiles:
+    name: "brain-flip.user.profiles"
+    partitions: 4
+    replication_factor: 3
+    config:
+      cleanup_policy: "compact"
+      
+  ai_personalization:
+    name: "brain-flip.ai.personalization"
+    partitions: 8
+    replication_factor: 3
+    config:
+      cleanup_policy: "compact,delete"
+      retention_ms: 2592000000  # 30 days
+      
+  # Aggregated Data
+  performance_aggregates:
+    name: "brain-flip.performance.aggregates"
+    partitions: 4
+    replication_factor: 3
+    config:
+      cleanup_policy: "compact,delete"
+      retention_ms: 15552000000  # 180 days
+      
+  leaderboards:
+    name: "brain-flip.leaderboards"
+    partitions: 2
+    replication_factor: 3
+    config:
+      cleanup_policy: "compact"
+      
+  # Alerts and Notifications
+  cognitive_alerts:
+    name: "brain-flip.cognitive.alerts"
+    partitions: 2
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 2592000000  # 30 days
+      
+  system_alerts:
+    name: "brain-flip.system.alerts"
+    partitions: 2
+    replication_factor: 3
+    config:
+      cleanup_policy: "delete"
+      retention_ms: 604800000  # 7 days
+
+# Stream Processing Topologies
+stream_processors:
+  # Real-time Cognitive Analytics
+  cognitive_analytics_processor:
+    input_topics: 
+      - "brain-flip.instruction.responses"
+      - "brain-flip.game.events"
+    output_topics:
+      - "brain-flip.cognitive.metrics"
+      - "brain-flip.cognitive.alerts"
+    processing_config:
+      window_size_ms: 300000  # 5 minutes
+      grace_period_ms: 60000   # 1 minute
+      retention_ms: 3600000    # 1 hour
+      
+  # User Profile Enrichment
+  user_profile_processor:
+    input_topics:
+      - "brain-flip.game.events"
+      - "brain-flip.social.events"
+    output_topics:
+      - "brain-flip.user.profiles"
+    processing_config:
+      enable_caching: true
+      cache_size_bytes: 10485760  # 10MB
+      
+  # AI Personalization Engine
+  ai_personalization_processor:
+    input_topics:
+      - "brain-flip.cognitive.metrics"
+      - "brain-flip.user.profiles"
+    output_topics:
+      - "brain-flip.ai.personalization"
+    processing_config:
+      ml_model_path: "/models/cognitive-personalization-v1.0"
+      inference_batch_size: 100
+      model_refresh_interval_ms: 3600000  # 1 hour
+      
+  # Real-time Leaderboards
+  leaderboard_processor:
+    input_topics:
+      - "brain-flip.game.events"
+      - "brain-flip.battle.events"
+    output_topics:
+      - "brain-flip.leaderboards"
+    processing_config:
+      window_size_ms: 86400000  # 24 hours
+      top_k_size: 1000
+      update_frequency_ms: 30000  # 30 seconds
+      
+  # Performance Aggregation
+  performance_aggregator:
+    input_topics:
+      - "brain-flip.instruction.responses"
+      - "brain-flip.cognitive.metrics"
+    output_topics:
+      - "brain-flip.performance.aggregates"
+    processing_config:
+      tumbling_window_ms: 3600000  # 1 hour
+      hopping_window_ms: 300000    # 5 minutes
+      session_timeout_ms: 1800000  # 30 minutes
+      
+  # Anomaly Detection
+  anomaly_detector:
+    input_topics:
+      - "brain-flip.cognitive.metrics"
+      - "brain-flip.performance.aggregates"
+    output_topics:
+      - "brain-flip.cognitive.alerts"
+      - "brain-flip.system.alerts"
+    processing_config:
+      anomaly_threshold: 3.0  # Standard deviations
+      min_samples: 100
+      detection_window_ms: 1800000  # 30 minutes
+
+# Schema Registry Configuration
+schema_registry:
+  url: "https://schema-registry.brain-flip.ai"
+  basic_auth_user_info: "${SCHEMA_REGISTRY_USER}:${SCHEMA_REGISTRY_PASSWORD}"
+  
+  # Avro Schemas
+  schemas:
+    game_event:
+      subject: "brain-flip.game.events-value"
+      version: "latest"
+      
+    instruction_response:
+      subject: "brain-flip.instruction.responses-value"
+      version: "latest"
+      
+    cognitive_metrics:
+      subject: "brain-flip.cognitive.metrics-value"
+      version: "latest"
+      
+    user_profile:
+      subject: "brain-flip.user.profiles-value"
+      version: "latest"
+
+# Monitoring and Observability
+monitoring:
+  # JMX Metrics
+  jmx:
+    enabled: true
+    port: 9999
+    
+  # Prometheus Metrics
+  prometheus:
+    enabled: true
+    port: 8080
+    path: "/metrics"
+    
+  # Health Checks
+  health_checks:
+    enabled: true
+    port: 8081
+    path: "/health"
+    
+  # Logging
+  logging:
+    level: "INFO"
+    pattern: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    
+    # Log specific events
+    log_events:
+      - "topology.start"
+      - "topology.stop"
+      - "rebalance.start"
+      - "rebalance.end"
+      - "error.processing"
+      - "lag.high"
+
+# Error Handling
+error_handling:
+  # Dead Letter Queue
+  dead_letter_queue:
+    enabled: true
+    topic: "brain-flip.dlq"
+    max_retries: 3
+    retry_backoff_ms: 1000
+    
+  # Error Tolerance
+  deserialization_error_handler: "CONTINUE"
+  production_error_handler: "FAIL"
+  
+  # Circuit Breaker
+  circuit_breaker:
+    enabled: true
+    failure_threshold: 5
+    timeout_ms: 60000
+    half_open_max_calls: 3
+
+# Security Configuration
+security:
+  # SSL Configuration
+  ssl:
+    enabled: true
+    keystore_location: "/etc/ssl/kafka/keystore.jks"
+    keystore_password: "${SSL_KEYSTORE_PASSWORD}"
+    truststore_location: "/etc/ssl/kafka/truststore.jks"
+    truststore_password: "${SSL_TRUSTSTORE_PASSWORD}"
+    
+  # SASL Configuration
+  sasl:
+    mechanism: "PLAIN"
+    jaas_config: "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
+
+# Performance Tuning
+performance:
+  # Memory Configuration
+  heap_size: "2g"
+  
+  # Thread Configuration
+  num_stream_threads: 4
+  num_standby_replicas: 1
+  
+  # Buffering Configuration
+  commit_interval_ms: 1000
+  cache_max_bytes_buffering: 10485760
+  
+  # Network Configuration
+  request_timeout_ms: 30000
+  retry_backoff_ms: 100
+  
+  # Compression
+  compression_type: "snappy"
+  
+  # Batching
+  batch_size: 16384
+  linger_ms: 5
+
+# Development and Testing
+development:
+  # Local Development
+  local_mode:
+    enabled: false
+    embedded_kafka: false
+    
+  # Testing
+  test_mode:
+    enabled: false
+    mock_time: false
+    
+  # Debug
+  debug:
+    enabled: false
+    log_level: "DEBUG"
+    trace_processing: false

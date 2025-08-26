@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: brain-flip-dev
+  labels:
+    name: brain-flip-dev
+    environment: development
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: brain-flip-prod
+  labels:
+    name: brain-flip-prod
+    environment: production
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: brain-flip-monitoring
+  labels:
+    name: brain-flip-monitoring
+    environment: shared

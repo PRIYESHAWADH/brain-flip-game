@@ -1,0 +1,790 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-specific optimizations */
+@layer base {
+  /* Prevent zoom on inputs and buttons */
+  input, button, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Improve touch targets */
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Smooth scrolling for mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent text selection on game elements */
+  .game-element {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Safe area support for notched devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@layer components {
+  /* Mobile-optimized button styles */
+  .mobile-btn {
+    @apply relative bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg transition-all duration-200 transform active:scale-95 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Touch-friendly card styles */
+  .mobile-card {
+    @apply relative rounded-lg border-2 transition-all duration-200 transform overflow-hidden select-none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .mobile-btn {
+      @apply border-2 border-white;
+    }
+    
+    .mobile-card {
+      @apply border-2 border-white;
+    }
+  }
+  
+  /* Dark mode optimizations */
+  @media (prefers-color-scheme: dark) {
+    .mobile-btn {
+      @apply bg-gray-800/80 border-gray-600/50;
+    }
+  }
+}
+
+@layer utilities {
+  /* Touch manipulation utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+  
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+  
+  .touch-none {
+    touch-action: none;
+  }
+  
+  /* Prevent text selection */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Tap highlight removal */
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Smooth animations */
+  .smooth-transform {
+    transition: transform 0.2s ease-out;
+  }
+  
+  /* Mobile-specific spacing */
+  .mobile-padding {
+    padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  
+  /* Landscape mode adjustments */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .landscape-compact {
+      @apply py-2;
+    }
+  }
+  
+  /* Portrait mode adjustments */
+  @media (orientation: portrait) {
+    .portrait-spacing {
+      @apply py-4;
+    }
+  }
+}
+
+/* Animation keyframes for mobile */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3) rotate(-180deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(-10deg); }
+  70% { transform: scale(0.9) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Responsive font sizes for mobile */
+@media (max-width: 375px) {
+  .text-responsive-sm {
+    font-size: 0.75rem;
+  }
+  
+  .text-responsive-base {
+    font-size: 0.875rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1rem;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .ios-fix {
+    -webkit-appearance: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Mobile-specific styles */
+@layer components {
+  .mobile-btn {
+    @apply relative bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 
+           border border-gray-600 rounded-xl p-3 text-white font-semibold transition-all duration-200
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-lg hover:shadow-xl active:shadow-md
+           select-none touch-manipulation;
+  }
+  
+  .mobile-btn:active {
+    @apply bg-gradient-to-br from-purple-600 to-purple-700 border-purple-500;
+  }
+  
+  .mobile-optimized {
+    @apply touch-manipulation select-none;
+  }
+  
+  /* Prevent zoom on double tap */
+  .no-zoom {
+    touch-action: manipulation;
+  }
+  
+  /* Better touch targets */
+  .touch-target {
+    @apply min-h-12 min-w-12;
+  }
+  
+  /* Mobile-friendly glass cards */
+  .mobile-glass-card {
+    @apply glass-card p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm;
+  }
+  
+  /* Responsive text sizes */
+  .mobile-text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  /* Mobile-friendly spacing */
+  .mobile-spacing {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+  
+  /* Safe area handling for mobile devices */
+  .safe-area-padding {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Mobile viewport handling */
+  .mobile-viewport {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+  
+  /* Improved scrolling on mobile */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Mobile-friendly animations */
+  .mobile-animation {
+    @apply transition-transform duration-150 ease-out;
+  }
+  
+  /* Prevent text selection on game elements */
+  .game-element {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Enhanced Design System */
+:root {
+	/* Brain Flip Brand Colors */
+	--brain-primary: #8b5cf6;
+	--brain-secondary: #06b6d4;
+	--brain-accent: #f59e0b;
+	--brain-success: #10b981;
+	--brain-warning: #f59e0b;
+	--brain-danger: #ef4444;
+	--brain-info: #3b82f6;
+
+	/* Neon Color Palette */
+	--neon-purple: #a855f7;
+	--neon-pink: #ec4899;
+	--neon-cyan: #06b6d4;
+	--neon-blue: #3b82f6;
+	--neon-green: #10b981;
+	--neon-yellow: #f59e0b;
+	--neon-orange: #f97316;
+	--neon-red: #ef4444;
+
+	/* Background Colors */
+	--bg-primary: #0f0f23;
+	--bg-secondary: #1a1a2e;
+	--bg-tertiary: #16213e;
+	--bg-quaternary: #0f3460;
+
+	/* Text Colors */
+	--text-primary: #ffffff;
+	--text-secondary: #e2e8f0;
+	--text-muted: #94a3b8;
+	--text-accent: #f1f5f9;
+
+	/* Glass Morphism */
+	--glass-bg: rgba(255, 255, 255, 0.05);
+	--glass-border: rgba(255, 255, 255, 0.1);
+	--glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+	/* Shadows & Glows */
+	--shadow-neon-purple: 0 0 20px rgba(168, 85, 247, 0.5);
+	--shadow-neon-pink: 0 0 20px rgba(236, 72, 153, 0.5);
+	--shadow-neon-cyan: 0 0 20px rgba(6, 182, 212, 0.5);
+	--shadow-neon-blue: 0 0 20px rgba(59, 130, 246, 0.5);
+	--shadow-neon-green: 0 0 20px rgba(16, 185, 129, 0.5);
+	--shadow-neon-yellow: 0 0 20px rgba(245, 158, 11, 0.5);
+
+	/* Animation Durations */
+	--duration-fast: 0.15s;
+	--duration-normal: 0.3s;
+	--duration-slow: 0.5s;
+	--duration-slower: 1s;
+
+	/* Z-Index Scale */
+	--z-dropdown: 1000;
+	--z-sticky: 1020;
+	--z-fixed: 1030;
+	--z-modal-backdrop: 1040;
+	--z-modal: 1050;
+	--z-popover: 1060;
+	--z-tooltip: 1070;
+}
+
+/* Enhanced Base Styles */
+@layer base {
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
+
+	/* Enhanced Typography */
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.025em;
+	}
+
+	/* Enhanced Focus Styles */
+	*:focus-visible {
+		outline: 2px solid var(--neon-cyan);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+
+	/* Enhanced Selection */
+	::selection {
+		background: var(--neon-purple);
+		color: white;
+	}
+
+	/* Enhanced Scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--bg-secondary);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--neon-purple);
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--neon-pink);
+	}
+}
+
+/* Enhanced Component Styles */
+@layer components {
+	/* Glass Card Component */
+	.glass-card {
+		background: var(--glass-bg);
+		backdrop-filter: blur(16px);
+		border: 1px solid var(--glass-border);
+		border-radius: 16px;
+		box-shadow: var(--glass-shadow);
+		transition: all var(--duration-normal) ease;
+	}
+
+	.glass-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+		border-color: var(--neon-purple);
+	}
+
+	/* Enhanced Button Components */
+	.btn-primary {
+		@apply bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl;
+		@apply hover:from-pink-600 hover:to-purple-600 transition-all duration-300;
+		@apply shadow-lg hover:shadow-xl transform hover:scale-105;
+		@apply focus:outline-none focus:ring-4 focus:ring-purple-500/50;
+		@apply active:scale-95;
+	}
+
+	.btn-secondary {
+		@apply bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold py-3 px-6 rounded-xl;
+		@apply hover:from-cyan-600 hover:to-blue-600 transition-all duration-300;
+		@apply shadow-lg hover:shadow-xl transform hover:scale-105;
+		@apply focus:outline-none focus:ring-4 focus:ring-blue-500/50;
+		@apply active:scale-95;
+	}
+
+	.btn-accent {
+		@apply bg-gradient-to-r from-green-600 to-yellow-600 text-white font-bold py-3 px-6 rounded-xl;
+		@apply hover:from-yellow-600 hover:to-green-600 transition-all duration-300;
+		@apply shadow-lg hover:shadow-xl transform hover:scale-105;
+		@apply focus:outline-none focus:ring-4 focus:ring-green-500/50;
+		@apply active:scale-95;
+	}
+
+	/* Enhanced Action Buttons */
+	.enhanced-action-btn {
+		@apply flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg text-white;
+		@apply hover:bg-purple-600/20 transition-all duration-300;
+		@apply border border-purple-500/30 hover:border-purple-500;
+		@apply transform hover:scale-105 active:scale-95;
+	}
+
+	.enhanced-primary-btn {
+		@apply bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600;
+		@apply text-white px-8 py-4 rounded-xl text-xl font-bold;
+		@apply transition-all duration-300 transform hover:scale-105;
+		@apply shadow-lg hover:shadow-xl hover:shadow-purple-500/50;
+		@apply border border-purple-500/50 hover:border-purple-500;
+		@apply active:scale-95;
+		background-size: 200% 200%;
+		animation: gradient-shift 3s ease infinite;
+	}
+
+	.enhanced-secondary-btn {
+		@apply bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600;
+		@apply text-white px-8 py-4 rounded-xl text-xl font-bold;
+		@apply transition-all duration-300 transform hover:scale-105;
+		@apply shadow-lg hover:shadow-xl hover:shadow-blue-500/50;
+		@apply border border-blue-500/50 hover:border-blue-500;
+		@apply active:scale-95;
+		background-size: 200% 200%;
+		animation: gradient-shift 3s ease infinite 1s;
+	}
+
+	.enhanced-accent-btn {
+		@apply bg-gradient-to-r from-green-600 via-yellow-600 to-green-600;
+		@apply text-white px-8 py-4 rounded-xl text-xl font-bold;
+		@apply transition-all duration-300 transform hover:scale-105;
+		@apply shadow-lg hover:shadow-xl hover:shadow-green-500/50;
+		@apply border border-green-500/50 hover:border-green-500;
+		@apply active:scale-95;
+		background-size: 200% 200%;
+		animation: gradient-shift 3s ease infinite 2s;
+	}
+
+	/* Game Mode Cards */
+	.game-mode-card {
+		@apply glass-card p-6 text-center cursor-pointer;
+		@apply hover:border-purple-500 transition-all duration-300;
+		@apply transform hover:scale-105 hover:shadow-xl;
+		@apply border border-purple-500/20;
+	}
+
+	/* Instruction Display */
+	.instruction-display {
+		@apply text-4xl md:text-5xl font-bold;
+		@apply text-center leading-tight;
+		@apply animate-pulse-glow;
+		text-shadow: 0 0 30px currentColor;
+	}
+
+	/* Timer Bar */
+	.timer-bar {
+		@apply h-2 rounded-full;
+		@apply bg-gradient-to-r from-green-500 via-yellow-500 to-red-500;
+		transform-origin: left;
+		transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s ease;
+		box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+	}
+
+	/* World-class Answer Buttons */
+	.answer-btn {
+		@apply glass-card p-4 text-center font-bold text-lg;
+		@apply hover:border-green-500 hover:bg-green-500/10;
+		@apply transition-all duration-200 transform hover:scale-105;
+		@apply cursor-pointer select-none;
+		@apply border border-purple-500/30;
+		@apply active:scale-95;
+		@apply min-h-[60px] flex items-center justify-center;
+		@apply relative overflow-hidden;
+		@apply focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-gray-900;
+		@apply shadow-lg shadow-purple-500/10;
+		@apply backdrop-blur-sm;
+		@apply will-change-transform;
+	}
+
+	.answer-btn:hover {
+		box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3);
+		transform: translateY(-2px) scale(1.02);
+	}
+
+	.answer-btn:active {
+		transform: translateY(0px) scale(0.98);
+		transition-duration: 0.1s;
+	}
+
+	/* WORLD-CLASS Enhanced Answer Button Layouts - Perfect Orientation */
+	.answer-btn.cross-layout {
+		@apply w-20 h-20;
+		/* Perfect cross pattern for directions */
+		@apply text-base font-extrabold;
+		@apply flex items-center justify-center;
+	}
+
+	.answer-btn.square-layout {
+		@apply w-28 h-28;
+		/* Perfect square for colors */
+		@apply text-lg font-extrabold;
+		@apply flex items-center justify-center;
+	}
+
+	.answer-btn.horizontal-layout {
+		@apply w-36 h-16;
+		/* Perfect horizontal row for actions */
+		@apply text-base font-extrabold;
+		@apply flex items-center justify-center;
+	}
+
+	.answer-btn.grid-layout {
+		@apply w-full h-16;
+		/* Perfect grid for combinations */
+		@apply text-sm font-bold;
+		@apply flex items-center justify-center;
+	}
+
+	/* HUD Cards */
+	.hud-card {
+		@apply glass-card p-4 text-center;
+		@apply border border-purple-500/20;
+	}
+
+	/* Neon Text Effects */
+	.neon-text {
+		text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+	}
+
+	/* Particle Effects */
+	.particle-effect {
+		@apply absolute pointer-events-none z-50;
+		@apply text-6xl font-bold;
+		animation: particle-float 2s ease-out forwards;
+	}
+
+	.particle-correct {
+		color: #10b981;
+		text-shadow: 0 0 20px #10b981;
+	}
+
+	.particle-incorrect {
+		color: #ef4444;
+		text-shadow: 0 0 20px #ef4444;
+	}
+
+	/* Modal Components */
+	.modal-backdrop {
+		@apply fixed inset-0 bg-black/50 backdrop-blur-sm;
+		@apply flex items-center justify-center z-50;
+		animation: modal-fade-in 0.3s ease-out;
+	}
+
+	.modal-content {
+		@apply glass-card p-8 max-w-md w-full mx-4;
+		@apply border border-purple-500/30;
+		animation: modal-slide-in 0.3s ease-out;
+	}
+}
+
+/* Enhanced Animations */
+@layer utilities {
+	/* Gradient Shift Animation */
+	@keyframes gradient-shift {
+		0%, 100% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+	}
+
+	/* Pulse Glow Animation */
+	@keyframes pulse-glow {
+		0%, 100% { 
+			text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+		}
+		50% { 
+			text-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 80px currentColor;
+		}
+	}
+
+	.animate-pulse-glow {
+		animation: pulse-glow 2s ease-in-out infinite;
+	}
+
+	/* Streak Fire Animation */
+	@keyframes streak-fire {
+		0%, 100% { 
+			transform: scale(1) rotate(0deg);
+			filter: hue-rotate(0deg);
+		}
+		25% { 
+			transform: scale(1.1) rotate(1deg);
+			filter: hue-rotate(90deg);
+		}
+		50% { 
+			transform: scale(1.2) rotate(0deg);
+			filter: hue-rotate(180deg);
+		}
+		75% { 
+			transform: scale(1.1) rotate(-1deg);
+			filter: hue-rotate(270deg);
+		}
+	}
+
+	.animate-streak-fire {
+		animation: streak-fire 0.5s ease-in-out infinite;
+	}
+
+	/* Ultra-smooth Screen Shake - Subtle and Elegant */
+	@keyframes screen-shake {
+		0%, 100% { transform: translateX(0) translateY(0); }
+		10% { transform: translateX(-1px) translateY(0px); }
+		20% { transform: translateX(1px) translateY(0px); }
+		30% { transform: translateX(-0.5px) translateY(0px); }
+		40% { transform: translateX(0.5px) translateY(0px); }
+		50% { transform: translateX(-0.25px) translateY(0px); }
+		60% { transform: translateX(0.25px) translateY(0px); }
+		70% { transform: translateX(-0.125px) translateY(0px); }
+		80% { transform: translateX(0.125px) translateY(0px); }
+		90% { transform: translateX(0px) translateY(0px); }
+	}
+	
+	.animate-screen-shake {
+		animation: screen-shake 0.2s ease-out;
+	}
+
+	/* Particle Float Animation */
+	@keyframes particle-float {
+		0% {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(-100px) scale(1.5);
+		}
+	}
+
+	/* Modal Animations */
+	@keyframes modal-fade-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	@keyframes modal-slide-in {
+		from { 
+			opacity: 0;
+			transform: translateY(-50px) scale(0.9);
+		}
+		to { 
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	/* Interactive Hover Effects */
+	.interactive-hover {
+		@apply transition-all duration-300;
+		@apply hover:shadow-lg hover:shadow-purple-500/30;
+		@apply hover:border-purple-500/50;
+	}
+
+	/* Text Gradient Utilities */
+	.text-gradient {
+		@apply bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500;
+		@apply bg-clip-text text-transparent;
+	}
+
+	/* Background Gradient Utilities */
+	.bg-gradient-radial {
+		background: radial-gradient(circle, var(--tw-gradient-stops));
+	}
+
+	/* Shadow Glow Utilities */
+	.shadow-glow {
+		box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+	}
+
+	.shadow-neon-green {
+		box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+	}
+
+	.shadow-neon-purple {
+		box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+	}
+
+	.shadow-neon-pink {
+		box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+	}
+
+	.shadow-neon-cyan {
+		box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+	}
+
+	.shadow-neon-blue {
+		box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+	}
+
+	.shadow-neon-yellow {
+		box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+	}
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Enhanced Performance Optimizations */
+.gpu-accelerated {
+	transform: translateZ(0);
+	will-change: transform;
+}
+
+/* Enhanced Focus Management */
+.focus-visible {
+	@apply outline-none ring-4 ring-cyan-500/50 ring-offset-2 ring-offset-gray-900;
+}
+
+/* Enhanced Print Styles */
+@media print {
+	.glass-card {
+		background: white !important;
+		border: 1px solid #ccc !important;
+		box-shadow: none !important;
+	}
+}

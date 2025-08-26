@@ -1,0 +1,138 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#312e81;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#d97706;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#92400e;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="url(#bgGradient)"/>
+  
+  <!-- Background glow -->
+  <circle cx="256" cy="256" r="200" fill="url(#glowGradient)" opacity="0.3"/>
+  
+  <!-- Main Brain Icon -->
+  <g transform="translate(256,256)">
+    <!-- Brain shadow -->
+    <path d="M-95,-75 C-110,-85 -85,-110 -60,-100 C-35,-110 -10,-85 -20,-60 C5,-75 25,-50 15,-25 C40,-35 65,-10 50,15 C75,5 100,30 85,55 C110,45 125,70 100,85 C85,110 60,85 35,75 C10,85 -15,60 -35,75 C-60,85 -85,60 -100,45 C-125,35 -110,10 -85,25 C-100,0 -75,-25 -60,-35 C-85,-45 -95,-75 -95,-75 Z" 
+          fill="#000000" 
+          opacity="0.2"
+          transform="translate(5,5)"/>
+    
+    <!-- Brain outline -->
+    <path d="M-90,-70 C-105,-80 -80,-105 -55,-95 C-30,-105 -5,-80 -15,-55 C10,-70 30,-45 20,-20 C45,-30 70,-5 55,20 C80,10 105,35 90,60 C115,50 130,75 105,90 C90,115 65,90 40,80 C15,90 -10,65 -30,80 C-55,90 -80,65 -95,50 C-120,40 -105,15 -80,30 C-95,5 -70,-20 -55,-30 C-80,-40 -90,-70 -90,-70 Z" 
+          fill="url(#brainGradient)" 
+          filter="url(#strongGlow)"
+          stroke="#fbbf24" 
+          stroke-width="3"/>
+    
+    <!-- Brain hemisphere division -->
+    <path d="M0,-70 C0,-50 0,-30 0,-10 C0,10 0,30 0,50 C0,70 0,80 0,90" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="4" 
+          opacity="0.4"/>
+    
+    <!-- Left brain details -->
+    <path d="M-70,-50 C-50,-40 -30,-50 -10,-40" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M-65,-20 C-45,-10 -25,-20 -5,-10" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M-70,10 C-50,20 -30,10 -10,20" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M-65,40 C-45,50 -25,40 -5,50" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    
+    <!-- Right brain details -->
+    <path d="M10,-40 C30,-50 50,-40 70,-50" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M5,-10 C25,-20 45,-10 65,-20" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M10,20 C30,10 50,20 70,10" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+    <path d="M5,50 C25,40 45,50 65,40" 
+          fill="none" 
+          stroke="#1e1b4b" 
+          stroke-width="3" 
+          opacity="0.4"/>
+  </g>
+  
+  <!-- Flip arrows -->
+  <g transform="translate(256,380)" opacity="0.9">
+    <path d="M-50,-12 L-25,-25 L-25,-18 L25,-18 L25,-25 L50,-12 L25,1 L25,-6 L-25,-6 L-25,1 Z" 
+          fill="#3b82f6" 
+          filter="url(#glow)"
+          stroke="#1e40af"
+          stroke-width="2"/>
+  </g>
+  
+  <!-- Game elements - corner indicators -->
+  <circle cx="120" cy="120" r="20" fill="#10b981" opacity="0.7" filter="url(#glow)"/>
+  <circle cx="392" cy="120" r="20" fill="#ef4444" opacity="0.7" filter="url(#glow)"/>
+  <circle cx="120" cy="392" r="20" fill="#8b5cf6" opacity="0.7" filter="url(#glow)"/>
+  <circle cx="392" cy="392" r="20" fill="#f59e0b" opacity="0.7" filter="url(#glow)"/>
+  
+  <!-- Connecting lines -->
+  <path d="M140,140 L372,140 L372,372 L140,372 Z" 
+        fill="none" 
+        stroke="#fbbf24" 
+        stroke-width="2" 
+        opacity="0.3" 
+        stroke-dasharray="10,5"/>
+  
+  <!-- Title text -->
+  <text x="256" y="450" 
+        font-family="Orbitron, monospace" 
+        font-size="24" 
+        font-weight="bold" 
+        text-anchor="middle" 
+        fill="#fbbf24" 
+        filter="url(#glow)">BRAIN FLIP</text>
+</svg>

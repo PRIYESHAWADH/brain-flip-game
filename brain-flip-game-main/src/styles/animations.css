@@ -1,0 +1,467 @@
+/**
+ * Animation System CSS - GPU-Optimized Keyframes and Utilities
+ * 
+ * All animations use only transform and opacity for optimal performance.
+ * Includes reduced-motion alternatives and hardware acceleration hints.
+ */
+
+/* ===== PERFORMANCE OPTIMIZATION ===== */
+
+/* Hardware acceleration hint for animated elements */
+.animate-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change after animation completes to save memory */
+.animate-complete {
+  will-change: auto;
+}
+
+/* ===== MICRO-INTERACTIONS ===== */
+
+/* Button hover scale effect */
+@keyframes button-hover {
+  0% { transform: scale(1) translateZ(0); }
+  100% { transform: scale(1.05) translateZ(0); }
+}
+
+/* Button press effect */
+@keyframes button-press {
+  0% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(0.95) translateZ(0); }
+  100% { transform: scale(1) translateZ(0); }
+}
+
+/* Icon bounce on hover */
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-4px) translateZ(0); }
+}
+
+/* Focus ring pulse */
+@keyframes focus-pulse {
+  0%, 100% { 
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05) translateZ(0);
+    opacity: 0.8;
+  }
+}
+
+/* ===== UI TRANSITIONS ===== */
+
+/* Optimized fade-in animation */
+@keyframes fade-in {
+  0% { 
+    opacity: 0;
+    transform: translateZ(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+/* Optimized fade-out animation */
+@keyframes fade-out {
+  0% { 
+    opacity: 1;
+    transform: translateZ(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateZ(0);
+  }
+}
+
+/* GPU-optimized slide-up */
+@keyframes slide-up {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* GPU-optimized slide-down */
+@keyframes slide-down {
+  0% { 
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+}
+
+/* Scale in with bounce */
+@keyframes scale-in {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8) translateZ(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05) translateZ(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* Modal appear animation */
+@keyframes modal-appear {
+  0% { 
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px) translateZ(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0) translateZ(0);
+  }
+}
+
+/* ===== GAME FEEDBACK EFFECTS ===== */
+
+/* Success celebration bounce */
+@keyframes success-bounce {
+  0%, 100% { 
+    transform: scale(1) translateZ(0);
+  }
+  25% { 
+    transform: scale(1.1) translateZ(0);
+  }
+  50% { 
+    transform: scale(0.95) translateZ(0);
+  }
+  75% { 
+    transform: scale(1.05) translateZ(0);
+  }
+}
+
+/* Failure shake effect */
+@keyframes failure-shake {
+  0%, 100% { 
+    transform: translateX(0) translateZ(0);
+  }
+  25% { 
+    transform: translateX(-4px) translateZ(0);
+  }
+  75% { 
+    transform: translateX(4px) translateZ(0);
+  }
+}
+
+/* Level up celebration */
+@keyframes level-up-celebration {
+  0% { 
+    transform: scale(1) rotate(0deg) translateZ(0);
+    opacity: 1;
+  }
+  25% { 
+    transform: scale(1.2) rotate(5deg) translateZ(0);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.1) rotate(-3deg) translateZ(0);
+    opacity: 1;
+  }
+  75% { 
+    transform: scale(1.15) rotate(2deg) translateZ(0);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg) translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* Streak bonus glow pulse */
+@keyframes streak-glow {
+  0%, 100% { 
+    transform: scale(1) translateZ(0);
+    filter: brightness(1) drop-shadow(0 0 0px currentColor);
+  }
+  50% { 
+    transform: scale(1.02) translateZ(0);
+    filter: brightness(1.2) drop-shadow(0 0 8px currentColor);
+  }
+}
+
+/* Perfect timing sparkle */
+@keyframes perfect-sparkle {
+  0% { 
+    transform: scale(0) rotate(0deg) translateZ(0);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg) translateZ(0);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1) rotate(360deg) translateZ(0);
+    opacity: 0;
+  }
+}
+
+/* ===== VALUE UPDATES ===== */
+
+/* Score update spring */
+@keyframes score-update {
+  0% { 
+    transform: scale(1) translateZ(0);
+  }
+  50% { 
+    transform: scale(1.15) translateZ(0);
+  }
+  100% { 
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* Streak counter bounce */
+@keyframes streak-update {
+  0%, 100% { 
+    transform: scale(1) translateY(0) translateZ(0);
+  }
+  50% { 
+    transform: scale(1.1) translateY(-2px) translateZ(0);
+  }
+}
+
+/* Level progress bar fill */
+@keyframes level-progress {
+  0% { 
+    transform: scaleX(0) translateZ(0);
+    transform-origin: left center;
+  }
+  100% { 
+    transform: scaleX(1) translateZ(0);
+    transform-origin: left center;
+  }
+}
+
+/* Timer tick pulse */
+@keyframes timer-tick {
+  0%, 100% { 
+    transform: scale(1) translateZ(0);
+  }
+  50% { 
+    transform: scale(1.02) translateZ(0);
+  }
+}
+
+/* ===== PAGE TRANSITIONS ===== */
+
+/* Page enter from right */
+@keyframes page-enter {
+  0% { 
+    opacity: 0;
+    transform: translateX(20px) translateZ(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+/* Page exit to left */
+@keyframes page-exit {
+  0% { 
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateX(-20px) translateZ(0);
+  }
+}
+
+/* Shared element transition */
+@keyframes shared-element {
+  0% { 
+    transform: scale(1) translateZ(0);
+  }
+  50% { 
+    transform: scale(1.05) translateZ(0);
+  }
+  100% { 
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* ===== PARTICLE EFFECTS ===== */
+
+/* Particle float up */
+@keyframes particle-float {
+  0% { 
+    opacity: 1;
+    transform: translateY(0) scale(1) translateZ(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5) translateZ(0);
+  }
+}
+
+/* Confetti fall */
+@keyframes confetti-fall {
+  0% { 
+    opacity: 1;
+    transform: translateY(-20px) rotate(0deg) translateZ(0);
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(100px) rotate(360deg) translateZ(0);
+  }
+}
+
+/* Star twinkle */
+@keyframes star-twinkle {
+  0%, 100% { 
+    opacity: 0;
+    transform: scale(0) rotate(0deg) translateZ(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1) rotate(180deg) translateZ(0);
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fade-in var(--animation-duration, 300ms) var(--animation-easing, ease-out) var(--animation-delay, 0ms) both;
+}
+
+.animate-fade-out {
+  animation: fade-out var(--animation-duration, 200ms) var(--animation-easing, ease-in) var(--animation-delay, 0ms) both;
+}
+
+.animate-slide-up {
+  animation: slide-up var(--animation-duration, 400ms) var(--animation-easing, cubic-bezier(0.16, 1, 0.3, 1)) var(--animation-delay, 0ms) both;
+}
+
+.animate-scale-in {
+  animation: scale-in var(--animation-duration, 300ms) var(--animation-easing, cubic-bezier(0.68, -0.55, 0.265, 1.55)) var(--animation-delay, 0ms) both;
+}
+
+.animate-success {
+  animation: success-bounce var(--animation-duration, 600ms) var(--animation-easing, cubic-bezier(0.68, -0.55, 0.265, 1.55)) var(--animation-delay, 0ms) both;
+}
+
+.animate-failure {
+  animation: failure-shake var(--animation-duration, 300ms) var(--animation-easing, cubic-bezier(0.4, 0, 0.6, 1)) var(--animation-delay, 0ms) both;
+}
+
+.animate-level-up {
+  animation: level-up-celebration var(--animation-duration, 1200ms) var(--animation-easing, cubic-bezier(0.16, 1, 0.3, 1)) var(--animation-delay, 0ms) both;
+}
+
+.animate-score-update {
+  animation: score-update var(--animation-duration, 400ms) var(--animation-easing, cubic-bezier(0.16, 1, 0.3, 1)) var(--animation-delay, 0ms) both;
+}
+
+/* ===== REDUCED MOTION ALTERNATIVES ===== */
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Replace motion with simple opacity changes */
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-success,
+  .animate-level-up {
+    animation: fade-in 150ms ease-out both;
+  }
+  
+  .animate-failure {
+    animation: none;
+    /* Use color change instead of shake */
+    background-color: var(--color-danger);
+    transition: background-color 150ms ease-out;
+  }
+  
+  /* Disable particle effects */
+  .animate-particle-float,
+  .animate-confetti-fall,
+  .animate-star-twinkle {
+    display: none;
+  }
+  
+  /* Disable hardware acceleration hints for reduced motion */
+  .animate-gpu {
+    will-change: auto;
+    transform: none;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Optimize animations for different performance levels */
+@media (prefers-reduced-data: reduce) {
+  /* Reduce animation complexity for low-bandwidth users */
+  .animate-level-up,
+  .animate-success {
+    animation-duration: 300ms;
+  }
+  
+  /* Disable particle effects */
+  .animate-particle-float,
+  .animate-confetti-fall {
+    display: none;
+  }
+}
+
+/* High refresh rate display optimizations */
+@media (min-resolution: 120dpi) {
+  .animate-gpu {
+    /* Enhanced hardware acceleration for high-DPI displays */
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ===== ANIMATION STATE MANAGEMENT ===== */
+
+/* Paused state for debugging or performance */
+.animations-paused * {
+  animation-play-state: paused !important;
+}
+
+/* Disabled state for accessibility */
+.animations-disabled * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Performance mode adjustments */
+.performance-low .animate-level-up,
+.performance-low .animate-success {
+  animation-duration: 200ms;
+}
+
+.performance-high .animate-level-up {
+  animation-duration: 1500ms;
+}
+
+.performance-high .animate-success {
+  animation-duration: 800ms;
+}
