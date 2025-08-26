@@ -100,7 +100,11 @@ Brain Flip Game is a web-based cognitive training game designed to improve react
 
 Watch the Brain Flip Game in action! This video demonstrates the core gameplay mechanics, different game modes, and the overall user experience.
 
-[![Brain Flip Game Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+
+
+https://github.com/user-attachments/assets/af640b0a-d501-4e90-8440-0887d49636f5
+
 
 **Video Features:**
 - 🎮 **Gameplay Walkthrough** - See how the game works
